@@ -49,15 +49,7 @@ def makethumbnail(image_url,text="house"):
 
 
 def thumbnail(topic="Mass Effect",text="Better than You Think"):
-    from ScriptWriter.TextGenerator import generate_text as tg
-
-
-    non_empty_lines = [line for line in text.split("\n") if line.strip() != ""]
-    string_without_empty_lines = "\n".join(non_empty_lines)
-    text = string_without_empty_lines
-    print(text)
-    prompt=f"Given this sentence get an interesting google image search term that is one word, if there is a subject in that sentence return that. The subject must be a proper noun. Do not add punctuation. Only return the search term in the response:\n{topic}\nHere are examples of inputs and outputs for this prompt\nInput: Analyzing the narrative structure of Mass Effect\nOutput: Mass Effect\nInput: Analyzing the narrative structure of Final Fantasy\nOutput: Final Fantasy"
-    search=tg(prompt)
+    search=tg(topic)
     non_empty_lines = [line for line in search.split("\n") if line.strip() != ""]
     string_without_empty_lines = "\n".join(non_empty_lines)
     search = string_without_empty_lines
@@ -84,10 +76,9 @@ def thumbnail(topic="Mass Effect",text="Better than You Think"):
         except:
             pass
 
-# from ScriptWriter import TextGenerator as tg
-# topic="Mass Effect"
-# thumb_ex=tg.thumbnail_phrases
-# prompt=f"generate text on this topic {topic} that's no more than 28 characters not including spaces and that has no words with more than 14 characters\n ideally the amount of characters should be between 7 and 24\nMake it sound like this:\n{thumb_ex}"
-# text=tg.generate_outline(prompt)
-# print(text)
-# thumbnail(topic,text)
+
+topic="Mass Effect"
+
+text="Better than You Think"
+
+thumbnail(topic,text)
